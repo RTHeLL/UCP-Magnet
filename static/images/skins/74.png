@@ -1,0 +1,205 @@
+﻿﻿<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<title>RakNet Role Play - Главная</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="RakNet,RP,server,Role Play,GTA,Gta san andreas,GTA SA,sa-mp,SAMP,host,samp,pawno,моды,машины,авто,гта,гта са,гта сан андреас" />
+		<!-- Bootstrap -->
+		<link rel="shortcut icon" href='http://raknet.su/favicon.ico' />
+		<link href="../../templates/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../templates/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+		<script src="../../templates/bootstrap/js/bootstrap-modal.js"></script>
+		<script type="text/javascript" src="http://mybootstrap.ru/wp-content/themes/clear-theme/js/bootstrap-tooltip.js"></script>
+		<style>
+			.show	{
+				display: block;
+			}
+			.show-grid	{
+				margin-top:10px;
+				margin-bottom:20px;
+			}
+			.show-grid [class*="span"]{
+				background-color:#ddd;
+				text-align:center;
+				-webkit-border-radius:3px;
+				-moz-border-radius:3px;
+				border-radius:3px;
+				min-height:40px;
+				line-height:40px;
+			}
+			.show-grid:hover [class*="span"]{
+				background:#ddd;
+			}
+			.show-grid .show-grid{
+				margin-top:0;
+				margin-bottom:0;
+			}
+			.show-grid .show-grid [class*="span"]{
+				margin-top:5px;
+			}
+			.show-grid [class*="span"] [class*="span"]{
+				background-color:#ccc;
+			}
+			.show-grid [class*="span"] [class*="span"] [class*="span"]{
+				background-color:#999;
+			}
+		</style>
+		<style type="text/css">
+			#background {
+				background-color: #ddd;
+			}
+		</style>
+		<meta name="google-site-verification" content="x6TxU4jiHWGtgEWkh4WD1f_160CswGI7xSjmq7Ts7Bk" />
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		  <script src="../../templates/bootstrap/js/html5shiv.js"></script>
+		<![endif]-->
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-39146441-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+	</head>
+	<body id="background">
+		<div id="snow"></div>
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<a class="brand" href="#">&nbsp;RakNet Role Play</a>
+				<ul class="nav">
+					<li>
+						<a href="../"><i class="icon-home"></i> Главная</a>
+					</li>
+					<li>
+						<a href="http://raknet.su/" target="_blank">Форум</a>
+					</li>
+					<li>
+						<a href='http://raknet.ru/?page=faq'><b>НАЧАТЬ ИГРАТЬ</b></a>
+					</li>
+					<li>
+						<a href='http://radio.raknet.ru:8000/play'>Радио</a>
+					</li>
+					<li>
+								<a href='http://raknet.ru/?page=donate'>Пополнить счет</a>
+							</li>
+							<li class='dropdown'>
+								<a href='#' class='dropdown-toggle' data-toggle='dropdown'>Мониторинг <b class='caret'></b></a>
+								<ul class='dropdown-menu'>
+									<li>
+										<a href='http://raknet.ru/?page=players' id='players'>Игроки онлайн</a>
+									</li>
+									<li>
+										<a href='http://raknet.ru/?page=leaders' id='leaders'>Лидеры организаций</a>
+									</li>
+									<li>
+										<a href='http://raknet.ru/?page=filling' id='filling'>Мониторинг АЗС</a>
+									</li>
+									<li>
+										<a href='http://raknet.ru/?page=store' id='store'>Мониторинг 24/7</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href='http://raknet.ru/?page=login' id='login'>Войти</a>
+							</li>
+				</ul>
+			</div>
+			<form method="post" class="pull-right" action="http://raknet.ru/?page=search">
+				<input type="text" class="span2 search" placeholder="Поиск" name="name">
+			</form>
+		</div>
+
+		<div class="container" style="margin-top: 80px;">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">Главная
+					</h4>
+				</div>
+				<div class="panel-body">
+					<div class="container-fluid">
+						<div class="row-fluid">
+									<script type="text/javascript" src="//vk.com/js/api/openapi.js?102"></script>
+									<!-- VK Widget -->
+									<div id="vk_groups"></div>
+									<script type="text/javascript">
+									VK.Widgets.Group("vk_groups", {mode: 2, wide: 1, width: "auto", height: "1000", color1: "ffffff", color2: "2B587A", color3: "5B7FA6"}, 31681727);
+									</script>
+								</div>
+								<meta http-equiv="refresh" content="60; URL=../">
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="panel-title"><center>2012-2013 &copy; RakNet Role Play. UCP 0.8.3</center></div>
+				</div>
+			</div>
+			<a href="http://servers-samp.ru/server-607" title="Servers-Samp - Серверы GTA SAMP" target="_blank">
+				<img src="http://servers-samp.ru/banner-607-6.png" title="Servers-Samp.ru - Серверы GTA SAMP" alt="RakNet Role Play"/>
+			</a>
+			<script type="text/javascript">
+			//<![CDATA[
+				(function(w,n,d,r,s){d.write('<a href="http://top.mail.ru/jump?from=2252086" target="_blank"><img src="'+
+				('https:'==d.location.protocol?'https:':'http:')+'//top-fwz1.mail.ru/counter?id=2252086;t=217;js=13'+
+				((r=d.referrer)?';r='+escape(r):'')+((s=w.screen)?';s='+s.width+'*'+s.height:'')+';_='+Math.random()+
+				'" height="31" width="88" alt="Рейтинг@Mail.ru"><\/a>');})(window,navigator,document);
+			//]]>
+			</script>
+			<noscript>
+				<a target="_blank" href="http://top.mail.ru/jump?from=2252086">
+					<img src="//top-fwz1.mail.ru/counter?id=2252086;t=217;js=na" height="31" width="88" alt="Рейтинг@Mail.ru">
+				</a>
+			</noscript>
+			<a href="https://passport.webmoney.ru/asp/certview.asp?wmid=253842882677" target="_blank">
+				<img src="https://passport.webmoney.ru/images/atstimg/88x31_user/88x31_wm_v_blue_on_transparent_ru.png"/>
+			</a>
+			<a href="http://webmoney.ru/" target="_blank">
+				<img src="http://www.webmoney.ru/img/icons/88x31_wm_blue_on_transparent_ru.png"/>
+			</a>
+			<script type="text/javascript">
+			(function (d, w, c) {
+				(w[c] = w[c] || []).push(function() {
+					try {
+						w.yaCounter20086684 = new Ya.Metrika({id:20086684,
+								webvisor:true,
+								clickmap:true,
+								trackLinks:true,
+								accurateTrackBounce:true});
+					} catch(e) { }
+				});						
+				var n = d.getElementsByTagName("script")[0],
+					s = d.createElement("script"),
+					f = function () { n.parentNode.insertBefore(s, n); };
+					s.type = "text/javascript";
+					s.async = true;
+					s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";	
+					if (w.opera == "[object Opera]") {
+						d.addEventListener("DOMContentLoaded", f, false);
+					} else { f(); }
+				})(document, window, "yandex_metrika_callbacks");
+			</script>
+			<noscript>
+				<div>
+					<img src="//mc.yandex.ru/watch/20086684" style="position:absolute; left:-9999px;" alt="" />
+				</div>
+			</noscript>
+			<br />
+			<br />		
+		</div>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript" src="../../templates/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../templates/bootstrap/js/bootstrap-transition.js"></script>
+		<script type="text/javascript" src="../../templates/bootstrap/js/bootstrap-dropdown.js"></script>
+	</body>
+</html>
+<!-- RakNet Role Play Copyright by Artur_Freeman, James_Braga, Alexey_Basinger (http://www.raknet.ru/) -->
+<!-- Site Created by Artur_Freeman -->
+<!-- Страница сгенерирована за 0.038 секунд -->

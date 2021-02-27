@@ -11,12 +11,19 @@
     <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-body border-bottom shadow-sm">
       <p class="h5 my-0 me-md-auto fw-normal">Magnet RP</p>
       <nav class="my-2 my-md-0 me-md-3">
-        <a class="p-2 text-dark" href="/">Главная</a>
-        <a class="p-2 text-dark" href="/forum">Форум</a>
-        <a class="p-2 text-dark" href="https://vk.com/official.magnet">ВКонтакте</a>
-        <a class="p-2 text-dark" href="/donate">Донат</a>
+        <a class="nav_btn p-2" href="/">Главная</a>
+        <a class="nav_btn p-2" href="/forum">Форум</a>
+        <a class="nav_btn p-2" href="https://vk.com/official.magnet">ВКонтакте</a>
+        <a class="nav_btn p-2" href="/donate">Донат</a>
       </nav>
-      <a class="btn btn-outline-primary" href="/cp">Sign up</a>
+        {% if session['name'] %}
+            <div>
+                <a class="btn btn-outline-primary" href="/cp">{% block user_name %} {{ session['name'] }} {% endblock %}</a>
+                <a class="btn btn-outline-primary" href="/cp/logout">Выйти</a>
+            </div>
+        {% else %}
+            <a class="btn btn-outline-primary" href="/cp/login">Войти</a>
+        {% endif %}
     </header>
 
     <main class="container">

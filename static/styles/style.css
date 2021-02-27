@@ -1,3 +1,20 @@
+a {
+    text-decoration: none;
+}
+
+.nav_btn {
+    color: #212529;
+}
+.nav_btn:hover {
+    background: #0d6efd;
+    color: #fff;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    z-index auto;
+}
+
 span.news_date {
     display: inline-block;
     font-size: 90%;
@@ -26,31 +43,50 @@ img.news_image {
 
 .connect_btn {
     display: block;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #0d6efd;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    border-color: #0d6efd;
-    font-family: Verdana,sans-serif;
-}
-.connect_btn:hover {
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
 }
 
 .news_text {
     text-align: auto;
     letter-spacing: 1.5px;
     z-index: auto;
+}
+
+.cp_login {
+    padding: 15px;
+    z-index: auto;
+}
+
+.userinfo {
+    margin-left: -20%;
+    z-index: auto;
+}
+
+.cp_skin {
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    /* left: -30%; */
+    z-index: auto;
+}
+
+
+.cp_rounded {
+    display: inline-block;
+    position: absolute;
+    text-align: left;
+    counter-reset: li;
+    list-style: none;
+    /* right: 50%; */
+    font: 14px "Trebuchet MS", "Lucida Sans";
+    text-shadow: 0 1px 0 rgba(255,255,255,.2);
+}
+.cp_column {
+    display: inline-block;
+    margin: .1em;
+    position: relative;
+    padding: .4em;
+    background: #0d6efd;
+    color: #fff;
+    border-radius: .3em;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }

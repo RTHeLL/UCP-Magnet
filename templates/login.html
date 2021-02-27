@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+<!-- Title -->
+{% block title %} Авторизация {% endblock %}
+
+<!-- Content -->
+{% block content %}
+
+
+    <div class="col">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <div class="my-0 fw-normal" style="text-align: center"> Авторизация </div>
+            </div>
+            <form action="/cp/login" method="POST">
+                <div class="cp_login">
+                    <div class="form-group">
+                        <label>Имя аккаунта:</label>
+                        <input type="text" class="form-control" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль:</label>
+                        <input type="password" class="form-control" name="password">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button class="btn btn-outline-primary">Авторизоваться</button>
+                    </div>
+                    {% if error!=None %}
+                        <br>
+                        <span style="color: #d11913;">{{ error }}</span>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock%}
