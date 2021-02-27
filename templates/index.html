@@ -1,0 +1,52 @@
+
+
+{% extends 'base.html' %}
+
+<!-- Title -->
+{% block title %} Главная страница {% endblock %}
+
+<!-- Content -->
+{% block content %}
+
+<!--    <h1>Добро пожаловать!</h1>-->
+<!--    Magnet RolePlay - это лучший бонусный проект многопользовательской игры GTA San Andreas Multiplayer.-->
+<!--    Мы работаем для своих игроков!-->
+<!--    <br> <br>-->
+<!--    <h1>Последие новости:</h1>-->
+
+    <div class="server_monitor">
+        {% block server_monitor %}
+
+        {% if server_monitor==None %}
+            <span style="color: #d11913">Сервер отключен!</span>
+        {% else %}
+            <div class="col">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <div class="my-0 fw-normal" style="text-align: center"> Информация о сервере</div>
+                    </div>
+                    <div class="card-body">
+                        Статус севрера: <span style="color: #18c912"> включен </span>
+                        <br>
+                        Игроков: {{ server_monitor.players }}/{{ server_monitor.max_players }}
+                        <br>
+                        Игровой мод: {{ server_monitor.gamemode }}
+                        <br>
+                        Язык сервера: {{ server_monitor.language }}
+                        <br>
+                        <div><a class="connect_btn" href="samp://46.174.50.46:7844">Подключиться</a></div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% endblock %}
+    </div>
+
+    {% for new in news %}
+        <a href="/news-{{ new['id'] }}"> <h2>{{ new['title'] }}</h2>
+        <img src="{{ new['image'] }}" class="news_image" alt="Norway" style="width:50%"><br>
+        <span class="news_date">{{ new['date'] }}</span>
+        </a>
+    {% endfor %}
+{% endblock%}

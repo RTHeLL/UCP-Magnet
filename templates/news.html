@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+<!-- Title -->
+{% block title %} {{ news['title'] }} {% endblock %}
+
+<!-- Content -->
+{% block content %}
+
+    {% block news %}
+        <h2>{{ news['title'] }}</h2>
+        <img src="{{ news['image'] }}", class="news_image" alt="Norway" style="width:70%"><br>
+        <br>
+        <div class="news_text"> {{ news['text'] }} </div>
+    {% endblock %}
+
+{% endblock%}
