@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+<!-- Title -->
+{% block title %} Личный кабинет {% endblock %}
+
+<!-- Content -->
+{% block content %}
+    <div class="col">
+        <div class="card mb-4 shadow-sm">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger" role="alert">
+                            <span style="color: #d11913;">{{ message }}</span>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="{{ url_for('donate.donate_handler') }}" method="POST">
+                <div class="cp_login">
+                        <input type="text" class="form-control" name="nickname" placeholder="Имя аккаунта">
+                        <br>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="sum" placeholder="Сумма" aria-label="Amount (to the nearest dollar)">
+                        <div class="input-group-append">
+                            <span class="input-group-text">RUB</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-primary">Оплатить</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+{% endblock%}

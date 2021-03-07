@@ -90,3 +90,8 @@ img.news_image {
     border-radius: .3em;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+.admin_panel_db_settings {
+    display: inline-block;
+    z-index: auto;
+}

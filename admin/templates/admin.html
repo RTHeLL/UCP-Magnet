@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+<!-- Title -->
+{% block title %} Админ-панель {% endblock %}
+
+<!-- Content -->
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger" role="alert">
+                    <span style="color: #d11913;">{{ message }}</span>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col">
+                <div class="card mb-4 shadow-sm">
+                    <form action="{{ url_for('admin.admin_panel') }}" method="POST">
+                        <div class="cp_login">
+                            <label>Заголовок новости</label>
+                            <input type="text" name="news_title" placeholder="Заголовок" class="form-control"  value="{{ request.form['news_title'] }}">
+                            <br>
+                            <label>Изображение</label>
+                            <input type="text" name="news_image" placeholder="Изображение" class="form-control"  value="{{ request.form['news_image'] }}">
+                            <br>
+                            <label>Текст новости</label>
+                            <textarea name="news_text" placeholder="Текст новости" class="form-control">{{ request.form['news_text'] }}</textarea>
+            <!--                {% if item=='db_setting' %}-->
+            <!--                    <div class="admin_panel_db_settings">-->
+            <!--                        <label>Имя:</label><input type="text" class="form-control" name="settings_db_name" value="{{ settings['Name'] }}">-->
+            <!--                        <label>Уровень:</label><input type="text" class="form-control" name="settings_db_level" value="{{ settings['Level'] }}">-->
+            <!--                        <label>Пол:</label><input type="text" class="form-control" name="settings_db_sex" value="{{ settings['Sex'] }}">-->
+            <!--                    </div>-->
+            <!--                {% else %}-->
+            <!--                    <select name="admin_select" class="custom-select">-->
+            <!--                        <option selected>Выберите категорию...</option>-->
+            <!--                        <option value="db_setting">Настройка базы данных</option>-->
+            <!--                        <option value="site_setting">Настройки сайта</option>-->
+            <!--                    </select>-->
+            <!--                {% endif %}-->
+                            <br>
+                            <div class="form-group">
+                                <button class="btn btn-outline-primary">Добавить</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+{% endblock%}

@@ -9,12 +9,15 @@
 </head>
 <body>
     <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-body border-bottom shadow-sm">
-      <p class="h5 my-0 me-md-auto fw-normal">Magnet RP</p>
+      <p class="h5 my-0 me-md-auto fw-normal"><a href="/">Magnet RP</a></p>
       <nav class="my-2 my-md-0 me-md-3">
         <a class="nav_btn p-2" href="/">Главная</a>
         <a class="nav_btn p-2" href="/forum">Форум</a>
         <a class="nav_btn p-2" href="https://vk.com/official.magnet">ВКонтакте</a>
         <a class="nav_btn p-2" href="/donate">Донат</a>
+        {% if session['Admin'] %}
+            <a class="nav_btn p-2" href="/admin">Админ-панель</a>
+        {% endif %}
       </nav>
         {% if session['name'] %}
             <div>
@@ -44,4 +47,5 @@
         </footer>
     </main>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </html>
