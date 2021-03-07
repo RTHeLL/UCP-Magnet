@@ -101,7 +101,6 @@ celerybeat.pid
 # SageMath parsed files
 *.sage.py
 tests.py
-config.ini
 
 # Environments
 .env
