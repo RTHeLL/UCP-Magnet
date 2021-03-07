@@ -6,11 +6,11 @@ admin = Blueprint('admin', __name__, template_folder='templates')
 
 
 # Admin panel
-@admin.route('/', methods=['GET', 'POST'])
+@admin.route('/')
 def admin_panel():
-    if 'Admin' not in session or session['Admin'] < 7:
-        flash('У Вас нет доступа к данной странице!')
-    return render_template("admin.html")
+    # if 'Admin' not in session or session['Admin'] < 7:
+    #     flash('У Вас нет доступа к данной странице!')
+    return render_template("admin_base.html")
 
 
 # Create news
@@ -28,10 +28,24 @@ def admin_panel_create_news():
             flash('Не введен текст!')
         else:
             Methods().create_news(title, image, text)
-            return render_template("admin.html")
-        # item = request.form.get('admin_select')
-        # settings = Methods().get_settings_db()
-        # if str(item) == 'db_setting':
-        #     return render_template("admin.html", item=item, settings=settings)
-        # else:
-        #     return render_template("admin.html")
+            return render_template("admin_base.html")
+    return render_template("admin_base.html")
+
+
+# Site settings
+@admin.route('/site-settings', methods=['GET', 'POST'])
+def admin_panel_site_settings():
+    return render_template("admin_base.html")
+
+
+# Table settings
+@admin.route('/table-settings', methods=['GET', 'POST'])
+def admin_panel_table_settings():
+    return render_template("admin_base.html")
+
+
+# Accounts
+@admin.route('/accounts', methods=['GET', 'POST'])
+def admin_panel_accounts():
+    accounts = Methods().get_users()
+    return render_template("admin_base.html", accounts=accounts)

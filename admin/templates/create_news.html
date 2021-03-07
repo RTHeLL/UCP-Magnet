@@ -1,50 +1,35 @@
-{% extends 'base.html' %}
+{% extends 'admin_base.html' %}
 
 <!-- Title -->
-{% block title %} Админ-панель {% endblock %}
+{% block title %} Админ-панель | Новости {% endblock %}
 
 <!-- Content -->
-{% block content %}
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-danger" role="alert">
-                    <span style="color: #d11913;">{{ message }}</span>
-                </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-    {% if 'Admin' not in session %}
-        <span style="color: #d11913;">У Вас нет доступа к этой странице</span>
-    {% else %}
-        {% if session['Admin'] < 7 %}
-            <span style="color: #d11913;">У Вас нет доступа к этой странице</span>
-        {% else %}
-            <div class="col">
+{% block nav_page %}
+    <div class="col">
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <div class="card mb-4 shadow-sm">
-                    <form action="{{ url_for('admin.admin_panel') }}" method="POST">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-danger" role="alert">
+                                    <span style="color: #d11913;">{{ message }}</span>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <form action="{{ url_for('admin.admin_panel_create_news') }}" method="POST">
                         <div class="cp_login">
                             <label>Заголовок новости</label>
-                            <input type="text" name="news_title" placeholder="Заголовок" class="form-control"  value="{{ request.form['news_title'] }}">
+                            <input type="text" name="news_title" placeholder="Заголовок" class="form-control"
+                                   value="{{ request.form['news_title'] }}">
                             <br>
                             <label>Изображение</label>
-                            <input type="text" name="news_image" placeholder="Изображение" class="form-control"  value="{{ request.form['news_image'] }}">
+                            <input type="text" name="news_image" placeholder="Изображение" class="form-control"
+                                   value="{{ request.form['news_image'] }}">
                             <br>
                             <label>Текст новости</label>
                             <textarea name="news_text" placeholder="Текст новости" class="form-control">{{ request.form['news_text'] }}</textarea>
-            <!--                {% if item=='db_setting' %}-->
-            <!--                    <div class="admin_panel_db_settings">-->
-            <!--                        <label>Имя:</label><input type="text" class="form-control" name="settings_db_name" value="{{ settings['Name'] }}">-->
-            <!--                        <label>Уровень:</label><input type="text" class="form-control" name="settings_db_level" value="{{ settings['Level'] }}">-->
-            <!--                        <label>Пол:</label><input type="text" class="form-control" name="settings_db_sex" value="{{ settings['Sex'] }}">-->
-            <!--                    </div>-->
-            <!--                {% else %}-->
-            <!--                    <select name="admin_select" class="custom-select">-->
-            <!--                        <option selected>Выберите категорию...</option>-->
-            <!--                        <option value="db_setting">Настройка базы данных</option>-->
-            <!--                        <option value="site_setting">Настройки сайта</option>-->
-            <!--                    </select>-->
-            <!--                {% endif %}-->
                             <br>
                             <div class="form-group">
                                 <button class="btn btn-outline-primary">Добавить</button>
@@ -53,6 +38,6 @@
                     </form>
                 </div>
             </div>
-        {% endif %}
-    {% endif %}
+        </div>
+    </div>
 {% endblock%}

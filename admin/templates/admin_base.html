@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+<!-- Title -->
+{% block title %} Админ-панель {% endblock %}
+
+<!-- Content -->
+{% block content %}
+    {% if 'Admin' not in session or session['Admin'] < 7 %}
+        <div class="alert alert-danger" role="alert">
+            <span style="color: #d11913;">У Вас нет доступа к данной странице!</span>
+        </div>
+    {% else %}
+<!--        {% with messages = get_flashed_messages() %}-->
+<!--            {% if messages %}-->
+<!--                {% for message in messages %}-->
+<!--                    <div class="alert alert-danger" role="alert">-->
+<!--                        <span style="color: #d11913;">{{ message }}</span>-->
+<!--                    </div>-->
+<!--                {% endfor %}-->
+<!--            {% endif %}-->
+<!--        {% endwith %}-->
+
+            <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                            aria-selected="true">Новости</button>
+
+                    <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
+                            aria-selected="false">Настройки сайта</button>
+
+                    <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"
+                            aria-selected="false">Настройки таблиц</button>
+
+                    <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings"
+                            aria-selected="false">Аккаунты</button>
+                </div>
+                <div class="col">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+                            <div class="card mb-4 shadow-sm">
+                                {% with messages = get_flashed_messages() %}
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                            <div class="alert alert-danger" role="alert">
+                                                <span style="color: #d11913;">{{ message }}</span>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endwith %}
+                                <form action="{{ url_for('admin.admin_panel_create_news') }}" method="POST">
+                                    <div class="cp_login">
+                                        <label>Заголовок новости</label>
+                                        <input type="text" name="news_title" placeholder="Заголовок" class="form-control"
+                                               value="{{ request.form['news_title'] }}">
+                                        <br>
+                                        <label>Изображение</label>
+                                        <input type="text" name="news_image" placeholder="Изображение" class="form-control"
+                                               value="{{ request.form['news_image'] }}">
+                                        <br>
+                                        <label>Текст новости</label>
+                                        <textarea name="news_text" placeholder="Текст новости" class="form-control">{{ request.form['news_text'] }}</textarea>
+                                        <br>
+                                        <div class="form-group">
+                                            <button class="btn btn-outline-primary">Добавить</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            <div class="card mb-4 shadow-sm">
+                                {% with messages = get_flashed_messages() %}
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                            <div class="alert alert-danger" role="alert">
+                                                <span style="color: #d11913;">{{ message }}</span>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endwith %}
+                                <h1>В разработке...</h1>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                            <div class="card mb-4 shadow-sm">
+                                {% with messages = get_flashed_messages() %}
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                            <div class="alert alert-danger" role="alert">
+                                                <span style="color: #d11913;">{{ message }}</span>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endwith %}
+                                <h1>В разработке...</h1>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                            <div class="card mb-4 shadow-sm">
+                                {% with messages = get_flashed_messages() %}
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                            <div class="alert alert-danger" role="alert">
+                                                <span style="color: #d11913;">{{ message }}</span>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endwith %}
+                                <h1>В разработке...</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+<!--            <div class="d-flex align-items-start">-->
+<!--                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">-->
+<!--                    <button onclick="window.location.href='{{ url_for('admin.admin_panel_create_news') }}'"-->
+<!--                            class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"-->
+<!--                            data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"-->
+<!--                            aria-selected="true">Новости</button>-->
+
+<!--                    <button onclick="window.location.href='{{ url_for('admin.admin_panel_site_settings') }}'"-->
+<!--                            class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"-->
+<!--                            data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"-->
+<!--                            aria-selected="false">Настройки сайта</button>-->
+
+<!--                    <button onclick="window.location.href='{{ url_for('admin.admin_panel_table_settings') }}'"-->
+<!--                            class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"-->
+<!--                            data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"-->
+<!--                            aria-selected="false">Настройки таблиц</button>-->
+
+<!--                    <button onclick="window.location.href='{{ url_for('admin.admin_panel_accounts') }}'"-->
+<!--                            class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"-->
+<!--                            data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings"-->
+<!--                            aria-selected="false">Аккаунты</button>-->
+<!--                </div>-->
+<!--                {% block nav_page %} {% endblock %}-->
+<!--            </div>-->
+    {% endif %}
+{% endblock%}

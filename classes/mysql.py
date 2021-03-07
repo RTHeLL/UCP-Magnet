@@ -13,6 +13,8 @@ else:
     log_handler = logging.FileHandler('logs/mysql.log')
     config.read('config.ini')
 log_handler.setLevel(logging.DEBUG)
+log_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
+log_handler.setFormatter(log_format)
 logger.addHandler(log_handler)
 
 
@@ -24,7 +26,7 @@ class MySQL:
                                      database=config['MySQL']['DB'],
                                      cursorclass=pymysql.cursors.DictCursor)
     except MySQLError as e:
-        logging.log(logging.CRITICAL, e)
+        logger.log(logging.CRITICAL, e)
 
 
 class Methods(MySQL):
@@ -55,7 +57,16 @@ class Methods(MySQL):
                 cursor.execute(sql % username)
                 result.update(cursor.fetchone())
             except TypeError:
-                logging.log(logging.CRITICAL, "User no admin")
+                logger.log(logging.INFO, "User no admin")
+            cursor.close()
+            return result
+
+    def get_users(self):
+        self.connection.ping()
+        with self.connection.cursor() as cursor:
+            sql = "SELECT * FROM accounts"
+            cursor.execute(sql)
+            result = cursor.fetchall()
             cursor.close()
             return result
 
