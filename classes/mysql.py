@@ -1,14 +1,27 @@
 import pymysql
 import logging
+import configparser
 
 from pymysql import MySQLError
 
-logging.basicConfig(filename='logs/mysql.log', level=logging.DEBUG)
+config = configparser.ConfigParser()
+logger = logging.getLogger(__name__)
+if __name__ == '__main__':
+    log_handler = logging.FileHandler('../logs/mysql.log')
+    config.read('../config.ini')
+else:
+    log_handler = logging.FileHandler('logs/mysql.log')
+    config.read('config.ini')
+log_handler.setLevel(logging.DEBUG)
+logger.addHandler(log_handler)
 
 
 class MySQL:
     try:
-        connection = pymysql.connect(host='localhost', user='root', password='root', database='samp',
+        connection = pymysql.connect(host=config['MySQL']['HOST'],
+                                     user=config['MySQL']['USER'],
+                                     password=config['MySQL']['PASS'],
+                                     database=config['MySQL']['DB'],
                                      cursorclass=pymysql.cursors.DictCursor)
     except MySQLError as e:
         logging.log(logging.CRITICAL, e)
@@ -64,4 +77,4 @@ class Methods(MySQL):
 
 
 if __name__ == '__main__':
-    logging.log(logging.ERROR, 'Module "mysql" no worked without main')
+    logger.log(logging.ERROR, 'Module "mysql" no worked without main')
