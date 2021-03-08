@@ -8,7 +8,7 @@ class Other:
     @staticmethod
     def get_server_info():
         try:
-            server = SampClient(address='46.174.50.46', port=7844).connect()
+            server = SampClient(address='45.153.231.35', port=7777).connect()
             server_info = server.get_server_info()
         except ConnectionError and TypeError:
             server_info = None
