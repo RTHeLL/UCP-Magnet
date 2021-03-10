@@ -34,7 +34,7 @@ class Methods(MySQL):
         self.connection.ping()
         with self.connection.cursor() as cursor:
             if news_id is None:
-                sql = "SELECT * FROM news_site"
+                sql = "SELECT * FROM news_site ORDER BY date DESC"
                 cursor.execute(sql)
                 result = cursor.fetchall()
             else:
