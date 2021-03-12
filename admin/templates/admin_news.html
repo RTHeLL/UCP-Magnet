@@ -1,0 +1,88 @@
+{% extends 'admin_base.html' %}
+
+<!-- Title -->
+{% block title %} Админ-панель | Новости {% endblock %}
+
+<!-- Content -->
+{% block nav_page %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                   <span>{{ message }}</span>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% if news_type_ == 'create' %}
+        <nav class="nav nav-pills flex-column flex-sm-row">
+            <a class="flex-sm-fill text-sm-center nav-link" aria-current="page" href="{{ url_for('admin.admin_panel_news') }}">Новости</a>
+            <a class="flex-sm-fill text-sm-center nav-link active" href="{{ url_for('admin.admin_panel_create_news') }}">Создать новость</a>
+        </nav>
+        <br>
+        <div class="col">
+            <div class="card mb-4 shadow-sm">
+                <form action="{{ url_for('admin.admin_panel_create_news') }}" method="POST">
+                    <div class="cp_login">
+                        <label>Заголовок новости</label>
+                        <input type="text" name="news_title" placeholder="Заголовок" class="form-control"
+                               value="{{ request.form['news_title'] }}" required>
+                        <br>
+                        <label>Изображение</label>
+                        <input type="text" name="news_image" placeholder="Изображение" class="form-control"
+                               value="{{ request.form['news_image'] }}" required>
+                        <br>
+                        <label>Текст новости</label>
+                        <textarea name="news_text" placeholder="Текст новости" class="form-control" required>{{ request.form['news_text'] }}</textarea>
+                        <br>
+                        <div class="form-group">
+                            <button class="btn btn-outline-primary">Добавить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <nav class="nav nav-pills flex-column flex-sm-row">
+            <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="{{ url_for('admin.admin_panel_news') }}">Новости</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="{{ url_for('admin.admin_panel_create_news') }}">Создать новость</a>
+        </nav>
+        <br>
+        {% if news_type_ == 'edit' %}
+            <div class="col">
+                <div class="card mb-4 shadow-sm">
+                    <form action="{{ url_for('admin.admin_panel_edit_news', news_id=edit_news['id']) }}" method="POST">
+
+                        <h2>{{ edit_news['title'] }}</h2>
+                        <img src="{{ edit_news['image'] }}" class="news_image" alt="Norway" style="width:70%"><br>
+                        <br>
+                        <div class="news_text"> {{ edit_news['text'] }} </div>
+
+                        <div class="cp_login">
+                            <label>Заголовок новости</label>
+                            <input type="text" name="news_title" placeholder="Заголовок" class="form-control"
+                                   value="{{ edit_news['title'] }}" required>
+                            <br>
+                            <label>Изображение</label>
+                            <input type="text" name="news_image" placeholder="Изображение" class="form-control"
+                                   value="{{ edit_news['image'] }}" required>
+                            <br>
+                            <label>Текст новости</label>
+                            <textarea name="news_text" placeholder="Текст новости" class="form-control" required>{{ edit_news['text'] }}</textarea>
+                            <br>
+                            <div class="form-group">
+                                <button class="btn btn-outline-primary">Изменить</button>
+                                <button name="delete_news" class="btn btn-outline-danger">Удалить</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+        <div class="card mb-4 shadow-sm">
+            {% for new in news %}
+                    <a href="{{ url_for('admin.admin_panel_edit_news', news_id=new['id']) }}"> {{ new['title'] }} <br> </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock%}

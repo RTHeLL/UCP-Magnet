@@ -44,7 +44,7 @@
     </div>
 
     {% for new in news %}
-        <a href="/news-{{ new['id'] }}"> <h2>{{ new['title'] }}</h2>
+        <a href="{{ url_for('news.news_page_handler', news_id=new['id']) }}"> <h2>{{ new['title'] }}</h2>
         <img src="{{ new['image'] }}" class="news_image" alt="Norway" style="width:50%"><br>
         <span class="news_date">{{ new['date'] }}</span>
         </a>

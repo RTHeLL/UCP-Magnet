@@ -46,8 +46,11 @@ img.news_image {
 }
 
 .news_text {
-    text-align: auto;
+    text-align: left;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
     letter-spacing: 1.5px;
+    white-space: pre-wrap;
     z-index: auto;
 }
 
@@ -57,18 +60,9 @@ img.news_image {
 }
 
 .userinfo {
-    margin-left: -20%;
+    display: table;
     z-index: auto;
 }
-
-.cp_skin {
-    display: inline-block;
-    text-align: left;
-    position: relative;
-    /* left: -30%; */
-    z-index: auto;
-}
-
 
 .cp_rounded {
     display: inline-block;

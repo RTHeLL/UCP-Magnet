@@ -61,6 +61,23 @@ class Methods(MySQL):
             cursor.close()
             return result
 
+    def admin_get_user(self, user_id):
+        self.connection.ping()
+        with self.connection.cursor() as cursor:
+            sql = "SELECT * FROM accounts WHERE id = '%s'"
+            cursor.execute(sql % user_id)
+            result = cursor.fetchone()
+            if result is None:
+                return False
+            try:
+                sql = "SELECT * FROM admin WHERE Name = '%s'"
+                cursor.execute(sql % result['Name'])
+                result.update(cursor.fetchone())
+            except TypeError:
+                logger.log(logging.INFO, "User no admin")
+            cursor.close()
+            return result
+
     def get_users(self):
         self.connection.ping()
         with self.connection.cursor() as cursor:
@@ -84,6 +101,32 @@ class Methods(MySQL):
         with self.connection.cursor() as cursor:
             sql = "INSERT INTO news_site (title, image, text) VALUES ('%s', '%s', '%s')"
             cursor.execute(sql % (args[0], args[1], args[2]))
+            cursor.close()
+
+    def edit_news(self, *args):
+        self.connection.ping()
+        with self.connection.cursor() as cursor:
+            sql = "UPDATE news_site SET title='%s', image='%s', text='%s' WHERE id = %d"
+            cursor.execute(sql % (args[0], args[1], args[2], args[3]))
+            cursor.close()
+
+    def delete_news(self, *args):
+        self.connection.ping()
+        with self.connection.cursor() as cursor:
+            sql = "DELETE FROM news_site WHERE id = %d"
+            cursor.execute(sql % args[0])
+            cursor.close()
+
+    def delete_user(self, *args):
+        self.connection.ping()
+        with self.connection.cursor() as cursor:
+            sql = "DELETE FROM accounts WHERE id = %d"
+            cursor.execute(sql % args[0])
+            try:
+                sql = "DELETE FROM admin WHERE Name = '%s'"
+                cursor.execute(sql % args[1])
+            except TypeError:
+                logger.log(logging.INFO, "User no admin")
             cursor.close()
 
 

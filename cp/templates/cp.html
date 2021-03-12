@@ -5,44 +5,51 @@
 
 <!-- Content -->
 {% block content %}
-    <div class="userinfo">
-        {% if user==None %}
-            <span style="color: #d11913;">Вы не авторизованы!</span>
-        {% else %}
-            <img class="cp_skin" src="{{ url_for('static', filename='/images/skins/') }}{{ user['pModel'] }}.png">
-
-            <ol class="cp_rounded">
-                <h2>Информация об персонаже</h2>
-                <li><span class="cp_column">Имя:</span> {{ user['Name'] }}</li>
-                <li><span class="cp_column">Уровень:</span> {{ user['pLevel'] }}</li>
-                {% if user['pSex']==1 %}
-                    <li><span class="cp_column">Пол:</span> мужской </li>
-                {% elif user['pSex']==2 %}
-                    <li><span class="cp_column">Пол:</span> женский </li>
+    <div class="col">
+        <div class="card mb-4 shadow-sm">
+                {% if user==None %}
+                    <span style="color: #d11913;">Вы не авторизованы!</span>
+                {% else %}
+                    <div class="d-flex align-items-center bd-highlight">
+                        <div class="p-2 flex-fill bd-highlight">
+                            <img src="{{ url_for('static', filename='/images/skins/') }}{{ user['pModel'] }}.png">
+                        </div>
+                        <div class="p-2 flex-fill bd-highlight">
+                            <h2 align="left">Информация об персонаже</h2>
+                            <ul class="list-group">
+                                <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Имя:</span> {{ user['Name'] }}</li>
+                                <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Уровень:</span> {{ user['pLevel'] }}</li>
+                                {% if user['pSex']==1 %}
+                                    <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Пол:</span> мужской </li>
+                                {% elif user['pSex']==2 %}
+                                    <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Пол:</span> женский </li>
+                                {% endif %}
+                                <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Деньги на руках:</span> {{ user['pCash'] }}$</li>
+                                <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Деньги в банке:</span> {{ user['pBank'] }}$</li>
+                                <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Номер телефона:</span> {{ user['pPnumber'] }}</li>
+                                {% if user['pFamilyName']!='None' %}
+                                    {% if user['pSex']==1 %}
+                                        <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Женат на {{ user['pFamilyName'] }}</span></li>
+                                    {% elif user['pSex']==2 %}
+                                        <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Замужем за {{ user['pFamilyName'] }} </span></li>
+                                    {% endif %}
+                                {% endif %}
+                                <br>
+                                <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Организация:</span> coming soon...</li>
+                                <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Подразделение:</span> coming soon...</li>
+                                <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Должность / ранг:</span> coming soon...</li>
+                    <!--            <br>-->
+                    <!--            <li><span class="badge bg-primary rounded-pill">Работа:</span> coming soon...</li>-->
+                    <!--            <br>-->
+                    <!--            {% if user['pHotel']!=-1 %}-->
+                    <!--                <li><span class="badge bg-primary rounded-pill">Проживание:</span> в отеле</li>-->
+                    <!--            {% elif user['pFlat']!=-1 %}-->
+                    <!--                <li><span class="badge bg-primary rounded-pill">Проживание:</span> в квартире № {{ user['pFlat'] }}</li>-->
+                    <!--            {% endif %}-->
+                            </ul>
+                        </div>
+                    </div>
                 {% endif %}
-                <li><span class="cp_column">Деньги на руках:</span> {{ user['pCash'] }}$</li>
-                <li><span class="cp_column">Деньги в банке:</span> {{ user['pBank'] }}$</li>
-                <li><span class="cp_column">Номер телефона:</span> {{ user['pPnumber'] }}</li>
-                {% if user['pFamilyName']!='None' %}
-                    {% if user['pSex']==1 %}
-                        <li><span class="cp_column">Женат на {{ user['pFamilyName'] }}</span></li>
-                    {% elif user['pSex']==2 %}
-                        <li><span class="cp_column">Замужем за {{ user['pFamilyName'] }} </span></li>
-                    {% endif %}
-                {% endif %}
-                <br>
-                <li><span class="cp_column">Организация:</span> coming soon...</li>
-                <li><span class="cp_column">Подразделение:</span> coming soon...</li>
-                <li><span class="cp_column">Должность / ранг:</span> coming soon...</li>
-    <!--            <br>-->
-    <!--            <li><span class="cp_column">Работа:</span> coming soon...</li>-->
-    <!--            <br>-->
-    <!--            {% if user['pHotel']!=-1 %}-->
-    <!--                <li><span class="cp_column">Проживание:</span> в отеле</li>-->
-    <!--            {% elif user['pFlat']!=-1 %}-->
-    <!--                <li><span class="cp_column">Проживание:</span> в квартире № {{ user['pFlat'] }}</li>-->
-    <!--            {% endif %}-->
-            </ol>
-        {% endif %}
+        </div>
     </div>
 {% endblock%}

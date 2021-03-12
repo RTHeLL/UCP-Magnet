@@ -15,7 +15,7 @@
         <a class="nav_btn p-2" href="/forum">Форум</a>
         <a class="nav_btn p-2" href="https://vk.com/krp.official">ВКонтакте</a>
         <a class="nav_btn p-2" href="/donate">Донат</a>
-        {% if session['Admin'] %}
+        {% if session['name'] == 'Kinder' or session['name'] == 'Antonio_Lucchetti' or session['name'] == 'Johnny_Lucchetti' %}
             <a class="nav_btn p-2" href="/admin">Админ-панель</a>
         {% endif %}
       </nav>

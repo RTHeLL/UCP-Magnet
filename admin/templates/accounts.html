@@ -12,31 +12,63 @@
                     {% with messages = get_flashed_messages() %}
                         {% if messages %}
                             {% for message in messages %}
-                                <div class="alert alert-danger" role="alert">
-                                    <span style="color: #d11913;">{{ message }}</span>
+                                <div class="alert alert-success" role="alert">
+                                    <span>{{ message }}</span>
                                 </div>
                             {% endfor %}
                         {% endif %}
                     {% endwith %}
-                        <h1>В разработке...</h1>
-<!--                    <form action="{{ url_for('admin.admin_panel_create_news') }}" method="POST">-->
-<!--                        <div class="cp_login">-->
-<!--                            <label>Заголовок новости</label>-->
-<!--                            <input type="text" name="news_title" placeholder="Заголовок" class="form-control"-->
-<!--                                   value="{{ request.form['news_title'] }}">-->
-<!--                            <br>-->
-<!--                            <label>Изображение</label>-->
-<!--                            <input type="text" name="news_image" placeholder="Изображение" class="form-control"-->
-<!--                                   value="{{ request.form['news_image'] }}">-->
-<!--                            <br>-->
-<!--                            <label>Текст новости</label>-->
-<!--                            <textarea name="news_text" placeholder="Текст новости" class="form-control">{{ request.form['news_text'] }}</textarea>-->
-<!--                            <br>-->
-<!--                            <div class="form-group">-->
-<!--                                <button class="btn btn-outline-primary">Добавить</button>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </form>-->
+                    {% if accounts_type == 'edit' %}
+                        <form method="POST">
+                            <div class="d-flex align-items-center bd-highlight">
+                                <div class="p-2 flex-fill bd-highlight">
+                                    <img src="{{ url_for('static', filename='/images/skins/') }}{{ user['pModel'] }}.png">
+                                </div>
+                                <div class="p-2 flex-fill bd-highlight">
+                                    <h2 align="left">Информация об персонаже</h2>
+                                    <ul class="list-group">
+                                        <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">ID:</span> {{ user['id'] }}</li>
+                                        <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Имя:</span> {{ user['Name'] }}</li>
+                                        <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Уровень:</span> {{ user['pLevel'] }}</li>
+                                        {% if user['pSex']==1 %}
+                                            <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Пол:</span> мужской </li>
+                                        {% elif user['pSex']==2 %}
+                                            <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Пол:</span> женский </li>
+                                        {% endif %}
+                                        <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Деньги на руках:</span> {{ user['pCash'] }}$</li>
+                                        <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Деньги в банке:</span> {{ user['pBank'] }}$</li>
+                                        <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Номер телефона:</span> {{ user['pPnumber'] }}</li>
+                                        {% if user['pFamilyName']!='None' %}
+                                            {% if user['pSex']==1 %}
+                                                <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Женат на {{ user['pFamilyName'] }}</span></li>
+                                            {% elif user['pSex']==2 %}
+                                                <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Замужем за {{ user['pFamilyName'] }} </span></li>
+                                            {% endif %}
+                                        {% endif %}
+                                        <br>
+                                        <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Организация:</span> coming soon...</li>
+                                        <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Подразделение:</span> coming soon...</li>
+                                        <li class="d-flex justify-content-between align-items-center"><span class="badge bg-primary rounded-pill">Должность / ранг:</span> coming soon...</li>
+                            <!--            <br>-->
+                            <!--            <li><span class="badge bg-primary rounded-pill">Работа:</span> coming soon...</li>-->
+                            <!--            <br>-->
+                            <!--            {% if user['pHotel']!=-1 %}-->
+                            <!--                <li><span class="badge bg-primary rounded-pill">Проживание:</span> в отеле</li>-->
+                            <!--            {% elif user['pFlat']!=-1 %}-->
+                            <!--                <li><span class="badge bg-primary rounded-pill">Проживание:</span> в квартире № {{ user['pFlat'] }}</li>-->
+                            <!--            {% endif %}-->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button name="delete_user" class="btn btn-outline-danger">Удалить</button>
+                            </div>
+                            <br>
+                        </form>
+                    {% endif %}
+                    {% for account in accounts %}
+                       <a href="{{ url_for('admin.admin_panel_accounts_user', user_id=account['id']) }}"> {{ account['Name'] }} <br> </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>

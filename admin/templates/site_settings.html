@@ -6,39 +6,17 @@
 <!-- Content -->
 {% block nav_page %}
     <div class="col">
-        <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                <div class="card mb-4 shadow-sm">
-                    {% with messages = get_flashed_messages() %}
-                        {% if messages %}
-                            {% for message in messages %}
-                                <div class="alert alert-danger" role="alert">
-                                    <span style="color: #d11913;">{{ message }}</span>
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
-                    <h1>В разработке...</h1>
-<!--                    <form action="{{ url_for('admin.admin_panel_create_news') }}" method="POST">-->
-<!--                        <div class="cp_login">-->
-<!--                            <label>Заголовок новости</label>-->
-<!--                            <input type="text" name="news_title" placeholder="Заголовок" class="form-control"-->
-<!--                                   value="{{ request.form['news_title'] }}">-->
-<!--                            <br>-->
-<!--                            <label>Изображение</label>-->
-<!--                            <input type="text" name="news_image" placeholder="Изображение" class="form-control"-->
-<!--                                   value="{{ request.form['news_image'] }}">-->
-<!--                            <br>-->
-<!--                            <label>Текст новости</label>-->
-<!--                            <textarea name="news_text" placeholder="Текст новости" class="form-control">{{ request.form['news_text'] }}</textarea>-->
-<!--                            <br>-->
-<!--                            <div class="form-group">-->
-<!--                                <button class="btn btn-outline-primary">Добавить</button>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </form>-->
-                </div>
-            </div>
+        <div class="card mb-4 shadow-sm">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger" role="alert">
+                            <span style="color: #d11913;">{{ message }}</span>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <h1>В разработке...</h1>
         </div>
     </div>
 {% endblock%}
